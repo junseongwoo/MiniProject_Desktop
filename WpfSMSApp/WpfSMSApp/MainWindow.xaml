@@ -120,7 +120,7 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="BtnAccount" 
+            <Button x:Name="BtnAccount" Click="BtnAccount_Click"
                     Grid.Column="6" 
                     Content="계정" FontSize="16" 
                     Foreground="White" Background="CornflowerBlue"
@@ -151,7 +151,7 @@
             </Button>
         </Grid>
         <Grid Background="WhiteSmoke">
-            <ContentControl x:Name="ActiveControl" /> <!-- 화면 전환 -->
+            <Frame x:Name="ActiveControl" /> <!-- 화면 전환 -->
         </Grid>
     </DockPanel>
 </mah:MetroWindow>

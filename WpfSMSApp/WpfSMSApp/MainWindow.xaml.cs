@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfSMSApp.View;
+using WpfSMSApp.View.Account;
 
 namespace WpfSMSApp
 {
@@ -57,6 +58,18 @@ namespace WpfSMSApp
             view.Owner = this;
             view.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             view.ShowDialog();
+        }
+
+        private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new MyAccount();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnAccount_Click : {ex}");
+            }
         }
     }
 }

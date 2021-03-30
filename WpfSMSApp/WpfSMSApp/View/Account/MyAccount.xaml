@@ -43,7 +43,6 @@
             <Button x:Name="BtnEditMyAccount" 
                     Content="계정정보 수정" Height="50" Margin="5, 10"
                     FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnEditMyAccount_Click"/>
-            
         </StackPanel>
         <!-- 버튼 영역 끝 -->
         
@@ -82,5 +81,6 @@
             <TextBlock Grid.Row="6" Grid.Column="1" x:Name="TxtUserActivated" Text="UserActivated"/>
         </Grid>
         <!-- 컨텐츠영역 끝 -->
+        <Frame x:Name="ActiveControl" NavigationUIVisibility="Hidden" /> <!-- 화면 전환 -->
     </Grid>
 </Page>

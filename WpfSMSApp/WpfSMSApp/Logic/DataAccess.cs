@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,15 @@ namespace WpfSMSApp.Logic
             }
 
             return users;
+        }
+
+        internal static int SetUser(User user)
+        {
+            using (var ctx = new SMSEntities())
+            {
+                ctx.User.AddOrUpdate(user);
+                return ctx.SaveChanges();    // commit
+            }
         }
     }
 }

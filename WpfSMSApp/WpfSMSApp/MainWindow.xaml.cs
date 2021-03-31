@@ -57,9 +57,11 @@ namespace WpfSMSApp
 
         private void ShowLoginView()
         {
-            LoginView view = new LoginView();
-            view.Owner = this;
-            view.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            LoginView view = new LoginView
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
             view.ShowDialog();
         }
 

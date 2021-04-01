@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfSMSApp.View.User"
+      xmlns:local="clr-namespace:WpfSMSApp.View.User" xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Codicons"
       mc:Ignorable="d" 
       d:DesignHeight="630" d:DesignWidth="1200"
       Title="UserList" Loaded="Page_Loaded">
@@ -51,7 +51,16 @@
                     FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnDeactivateUser_Click"/>
             <Button x:Name="BtnExportPdf" 
                     Content="PDF익스포트" Height="50" Margin="5, 5"
-                    FontSize="14" Background="Silver" Foreground="Black" Click="BtnExportPdf_Click"/>
+                    FontSize="14" Background="Silver" Foreground="Black" Click="BtnExportPdf_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="20, 0" VerticalAlignment="Center" />
+                            <iconPacks:PackIconCodicons Kind="FilePDF" Width="24" Height="24" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
         </StackPanel>
         <!-- 버튼 영역 끝 -->
         

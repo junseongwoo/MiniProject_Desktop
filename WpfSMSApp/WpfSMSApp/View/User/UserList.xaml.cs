@@ -37,7 +37,15 @@ namespace WpfSMSApp.View.User
 
         private void BtnEditMyAccount_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new EditAccount());
+            try
+            {
+                NavigationService.Navigate(new EditUser());
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnEditUser_Click : {ex}");
+                throw ex;
+            }
         }
 
         private void BtnAddUser_Click(object sender, RoutedEventArgs e)

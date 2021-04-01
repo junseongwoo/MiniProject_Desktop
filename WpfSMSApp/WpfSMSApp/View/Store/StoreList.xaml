@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfSMSApp.View.Store" xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Codicons" xmlns:iconPacks1="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Modern"
+      xmlns:local="clr-namespace:WpfSMSApp.View.Store" xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Codicons" xmlns:iconPacks1="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Modern" xmlns:iconPacks11="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.FontAwesome" xmlns:iconPacks12="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.MaterialDesign"
       mc:Ignorable="d" 
       d:DesignHeight="630" d:DesignWidth="1200"
       Title="StoreList" Loaded="Page_Loaded">
@@ -40,15 +40,35 @@
 
         <!-- 버튼 영역 시작 -->
         <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
-            <Button x:Name="BtnAddUser" 
+            <Button x:Name="BtnAddStore" 
                     Content="창고추가" Height="50" Margin="5, 10, 5, 5"
-                    FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnAddUser_Click"/>
-            <Button x:Name="BtnEditUser" 
+                    FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnAddStore_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="20, 0" VerticalAlignment="Center" />
+                            <iconPacks12:PackIconMaterialDesign Kind="AddCircle" Width="24" Height="24" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button x:Name="BtnEditStore" 
                     Content="창고수정" Height="50" Margin="5, 5"
-                    FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnEditUser_Click"/>
+                    FontSize="14" Background="DarkSlateBlue" Foreground="White" Click="BtnEditStore_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="20, 0" VerticalAlignment="Center" />
+                            <iconPacks11:PackIconFontAwesome Kind="PenSolid" Width="24" Height="24" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
             <Button x:Name="BtnExportPdf" 
                     Content="Excel익스포트" Height="50" Margin="5, 5"
-                    FontSize="14" Background="Silver" Foreground="Black" Click="BtnExportPdf_Click">
+                    FontSize="14" Background="Silver" Foreground="Black" Click="BtnExportPdf_Click_1">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -69,13 +89,10 @@
                       Style="{StaticResource MahApps.Styles.DataGrid.Azure}" 
                       ItemsSource="{Binding}" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding UserID}" Header="순번" Width="60" />
-                    <DataGridTextColumn Binding="{Binding UserIdentityNumber}" Header="사번" Width="1*"/>
-                    <DataGridTextColumn Binding="{Binding UserSurname}" Header="성" Width="1*"/>
-                    <DataGridTextColumn Binding="{Binding UserName}" Header="이름" Width="1*"/>
-                    <DataGridTextColumn Binding="{Binding UserEmail}" Header="이메일" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding UserAdmin}" Header="관리자여부" Width="85"/>
-                    <DataGridTextColumn Binding="{Binding UserActivated}" Header="활성여부" Width="85"/>
+                    <DataGridTextColumn Binding="{Binding StoreID}" Header="순번" Width="60" />
+                    <DataGridTextColumn Binding="{Binding StoreName}" Header="창고명" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding StoreLocation}" Header="창고위치" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding StockQuantity}" Header="재고수" Width="1*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

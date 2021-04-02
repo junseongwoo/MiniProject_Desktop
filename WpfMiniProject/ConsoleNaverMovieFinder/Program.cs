@@ -40,7 +40,7 @@ namespace ConsoleNaverMovieFinder
 
         }
 
-        private static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
+        public static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
         {
             var result = "";
 

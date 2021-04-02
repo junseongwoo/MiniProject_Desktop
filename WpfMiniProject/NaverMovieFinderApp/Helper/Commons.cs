@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -23,7 +24,7 @@ namespace NaverMovieFinderApp.Helper
             return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title, message, style, null);
         }
         
-        private static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
+        public static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
         {
             var result = "";
 
@@ -49,6 +50,22 @@ namespace NaverMovieFinderApp.Helper
             }
 
             return result;
+        }
+
+        public static string StripHtmlTag(string text)
+        {
+            return Regex.Replace(text, @"<(.|\n)*?>", ""); //HTML 정규표현식 수정
+        }
+
+        public static string StripPipe(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return "";
+            else
+                return text.Substring(0, text.LastIndexOf("|")).Replace("|", ", ");
+
+            /*string result = text.Replace("|", ", ");
+            result.LastIndexOf(",");*/
         }
     }
 }

@@ -19,7 +19,7 @@
 
         <Label x:Name="LblMovieName" FontSize="16" Margin="5" Style="{StaticResource MahApps.Styles.Label}" />
 
-        <ListView x:Name="LsvYoutubeSearch" Grid.Row="1" Grid.Column="0">
+        <ListView x:Name="LsvYoutubeSearch" Grid.Row="1" Grid.Column="0" MouseDoubleClick="LsvYoutubeSearch_MouseDoubleClick_1">
             <!--<ListView.ItemContainerStyle></ListView.ItemContainerStyle>-->
             <ListView.View>
                 <GridView>

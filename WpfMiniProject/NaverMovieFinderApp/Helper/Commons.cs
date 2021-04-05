@@ -31,7 +31,7 @@ namespace NaverMovieFinderApp.Helper
         
         public static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
         {
-            var result = "";
+            var result = string.Empty;
 
             try
             {

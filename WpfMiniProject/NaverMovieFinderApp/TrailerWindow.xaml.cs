@@ -42,8 +42,6 @@ namespace NaverMovieFinderApp
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             youtubes = new List<YoutubeItem>(); // 초기화
-            // 유튜브 API로 검색
-            //MessageBox.Show("유튜브 검색!");
             ProcSearchYoutubeApi();
         }
 
@@ -58,7 +56,7 @@ namespace NaverMovieFinderApp
             var youtubeService = new YouTubeService(
                 new BaseClientService.Initializer()
                 {
-                    ApiKey = "AIzaSyCXib5-Wu2HGVttwoGn5E5QTp1nS37fw6o",
+                    ApiKey = "AIzaSyAgA2T8-gYSqc6o75H2nXabMoFF-qFg34k",
                     ApplicationName = this.GetType().ToString()
                 });
 
@@ -80,12 +78,19 @@ namespace NaverMovieFinderApp
                     };
                     // 썸네일 이미지
                     youtube.Thumbnail = new BitmapImage(new Uri(item.Snippet.Thumbnails.Default__.Url, UriKind.RelativeOrAbsolute));
+
                     youtubes.Add(youtube);
                 }
             }
         }
 
-        private void LsvYoutubeSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            BrwYoutubeWatch.Source = null;
+            BrwYoutubeWatch.Dispose();
+        }
+
+        private void LsvYoutubeSearch_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             if (LsvYoutubeSearch.SelectedItems.Count == 0)
             {
@@ -99,17 +104,12 @@ namespace NaverMovieFinderApp
                 return;
             }
 
-            if (LsvYoutubeSearch.SelectedItems is YoutubeItem)
+            if (LsvYoutubeSearch.SelectedItem is YoutubeItem)
             {
                 var video = LsvYoutubeSearch.SelectedItem as YoutubeItem;
-                BrwYoutubeWatch.Source = new Uri(video.URL);
+                BrwYoutubeWatch.Source = new Uri(video.URL, UriKind.RelativeOrAbsolute);
             }
         }
-
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            BrwYoutubeWatch.Source = null;  // 해제
-            BrwYoutubeWatch.Dispose();      // 리소스 즉시해제.
-        }
     }
+
 }

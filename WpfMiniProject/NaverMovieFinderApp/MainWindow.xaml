@@ -8,7 +8,7 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:NaverMovieFinderApp"
     mc:Ignorable="d"
-    Title="Naver MovieFinder" Height="500" Width="1200" Loaded="MetroWindow_Loaded">
+    Title="Naver MovieFinder" Height="500" Width="1200" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
             <iconPacks:PackIconForkAwesome Kind="YoutubeSquare" Margin="5, 7, 0, 0" Foreground="White"/>
@@ -20,16 +20,19 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="Auto"/><!--4-->
+            <RowDefinition Height="Auto"/>
+            <!--4-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="20"/><!--3-->
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="493*"/>
+            <ColumnDefinition Width="384*"/>
+            <ColumnDefinition Width="20"/>
+            <!--3-->
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
             <TextBox x:Name="TxtMovieName" Width="515" Margin="10" FontSize="14"
                      InputMethod.PreferredImeState="On"
                      InputMethod.PreferredImeConversionMode="Native"
@@ -55,7 +58,7 @@
                   Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False" Margin="10" IsReadOnly="True"
                   Style="{StaticResource MahApps.Styles.DataGrid.Azure}" SelectionUnit="FullRow"
                   GridLinesVisibility="Vertical"
-                  ItemsSource="{Binding}" SelectedCellsChanged="GrdData_SelectedCellsChanged" >
+                  ItemsSource="{Binding}" SelectedCellsChanged="GrdData_SelectedCellsChanged" Grid.ColumnSpan="2" >
             <DataGrid.Columns>
                 <DataGridTextColumn  Binding ="{Binding Title}" Header="영화제목" IsReadOnly="True" FontWeight="Bold"/>
                 <DataGridTextColumn  Binding ="{Binding SubTitle}" Header="영어제목" IsReadOnly="True"/>
@@ -66,9 +69,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Image x:Name="ImgPoster" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10" Source="No_Picture.jpg" ></Image>
+        <Image x:Name="ImgPoster" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10" Source="No_Picture.jpg" ></Image>
 
-        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Stretch" >
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" >
             <Button x:Name="BtnAddWatchList" 
                     Content="즐겨찾기추가" Margin="5,10" Width="130" FontSize="12"
                     Background="ForestGreen" Foreground="White" Click="BtnAddWatchList_Click">
@@ -132,7 +135,7 @@
 
         </StackPanel>
 
-        <StatusBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4">
+        <StatusBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5">
             <StatusBarItem Content="Naver &amp; Youtub e OpenAPI APP"/>
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
             <StatusBarItem x:Name="StsResult" />

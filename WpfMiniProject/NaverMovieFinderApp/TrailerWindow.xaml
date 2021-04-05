@@ -12,25 +12,24 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="LblMovieName" Grid.Row="0" Grid.Column="0" FontSize="16" Margin="5" Style="{StaticResource }" />
+        <Label x:Name="LblMovieName" FontSize="16" Margin="5" Style="{StaticResource MahApps.Styles.Label}" />
 
         <ListView x:Name="LsvYoutubeSearch" Grid.Row="1" Grid.Column="0">
+            <!--<ListView.ItemContainerStyle></ListView.ItemContainerStyle>-->
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="섬네일">
+                    <GridViewColumn Header="섬네일" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Thumbnail}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
                     <GridViewColumn Width="Auto" Header="타이틀" DisplayMemberBinding="{Binding Title}" />
                     <GridViewColumn Width="Auto" Header="제작자" DisplayMemberBinding="{Binding Author}" />
                     <GridViewColumn Width="Auto" Header="링크" DisplayMemberBinding="{Binding URL}" />
@@ -39,7 +38,7 @@
         </ListView>
 
         <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="10">
-            <WebBrowser x:Name="BrwYoutubeWatch"/>
+            <WebBrowser x:Name="BrwYoutubeWatch" />
         </Grid>
     </Grid>
 </mah:MetroWindow>

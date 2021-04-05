@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace NaverMovieFinderApp.Model
 {
-    class YoutubeItem
+    public class YoutubeItem
     {
         public string Title { get; set; }
 
@@ -15,6 +16,6 @@ namespace NaverMovieFinderApp.Model
 
         public string URL { get; set; }
 
-        public Image Thumbnail { get; set; }
+        public BitmapImage Thumbnail { get; set; }
     }
 }
